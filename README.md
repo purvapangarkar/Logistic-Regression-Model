@@ -70,6 +70,13 @@ In this activity, I implemented Logistic Regression for a binary classification 
 
 I learned how Logistic Regression predicts probabilities, converts them into class labels and evaluates classification performance using different metrics. I also understood how changing the classification threshold affects the predictions.
 
+## Decision Log
+
+1. **Removing Loan_ID:** I removed the Loan_ID column because it is only an identifier and does not help predict loan approval.
+2. **Handling Missing Values:** I used median for numerical columns and mode for categorical columns to fill missing values.
+3. **Stratified Train-Test Split:** I used an 80:20 stratified split to maintain the class distribution in training and testing data.
+4. **Threshold Comparison:** I compared thresholds of 0.3, 0.5 and 0.7 to understand their effect on loan approval predictions.
+
 ## 7. Project Files
 
 - `Loan_Approval_Logistic_Regression.ipynb` – Completed Python notebook.
