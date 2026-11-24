@@ -96,13 +96,18 @@ The model was evaluated using different classification evaluation metrics.
 
 The following results were obtained:
 
+The Logistic Regression model was evaluated using a classification threshold of 0.5.
+
 | Evaluation Metric | Result |
 |---|---:|
-| Accuracy | 74.80% |
-| Precision | 73.68% |
+| Accuracy | 84.55% |
+| Precision | 82.35% |
 | Recall | 98.82% |
-| F1-Score | 84.42% |
-| ROC-AUC Score | 84.18% |
+| Specificity | 52.63% |
+| F1-Score | 89.84% |
+| ROC-AUC | 84.18% |
+
+The model achieved 84.55% testing accuracy. Threshold comparison was also performed using 0.3, 0.5 and 0.7 to understand how changing the threshold affects classification results.
 
 **Explanation of Evaluation Metrics:**
 
