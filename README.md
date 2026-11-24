@@ -1,90 +1,201 @@
-# ML Activity 2: Loan Approval Prediction Using Logistic Regression
+ BINARY CLASSIFICATION USING LOGISTIC REGRESSION
 
-## 1. About the Activity
+## 1. Aim
 
-This activity is based on Binary Classification using Logistic Regression.
+To build a Logistic Regression model for a binary classification problem using the Loan Prediction dataset. The model predicts whether a loan application will be approved or rejected based on applicant details.
 
-The main objective is to build a Logistic Regression model that predicts whether a loan application will be approved or rejected.
+## 2. Dataset Description
 
-## 2. Dataset Information
+**Dataset Name:** Loan Prediction Problem Dataset
 
-- **Dataset Name:** Loan Prediction Problem Dataset
-- **Source:** Kaggle
-- **Dataset Link:** https://www.kaggle.com/datasets/altruistdelhite04/loan-prediction-problem-dataset
-- **File Used:** train.csv
-- **Target Column:** Loan_Status
+**Source:** Kaggle – Analytics Vidhya Loan Prediction Problem
 
-The dataset contains information about loan applicants, such as gender, marital status, education, income, loan amount and credit history.
+**Dataset File:** `train.csv`
 
-The target column has two classes:
+**Target Variable:** `Loan_Status`
 
-- Y – Loan Approved (1)
-- N – Loan Rejected (0)
+The dataset contains information about loan applicants, such as applicant income, co-applicant income, loan amount, loan amount term, credit history, and other details.
 
-## 3. Tools and Technologies Used
+The target variable has two classes:
 
-- Python
-- Google Colab
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Scikit-learn
+- 0 – Loan Rejected (N)
+- 1 – Loan Approved (Y)
 
-## 4. Work Completed
+**Type of Dataset:** Structured tabular dataset
 
-The following steps were performed in this activity:
+**Type of Problem:** Binary Classification
 
-1. Loaded and explored the dataset.
-2. Checked missing values and duplicate records.
-3. Visualized the loan approval class distribution.
-4. Handled missing values.
-5. Converted categorical data into numerical form.
-6. Scaled the features.
-7. Divided the dataset into training and testing sets using an 80:20 stratified split.
-8. Studied the sigmoid function and Logistic Regression.
-9. Trained the Logistic Regression model.
-10. Predicted loan approval probabilities and class labels.
-11. Compared different classification thresholds (0.3, 0.5 and 0.7).
-12. Evaluated the model using a confusion matrix, accuracy, precision, recall, specificity and F1-score.
-13. Compared the model with a majority-class baseline.
-14. Plotted the ROC curve and calculated ROC-AUC.
-15. Tested the model using a new applicant example.
+## 3. Data Loading and Inspection
 
-## 5. Key Results
+The dataset was loaded using the Pandas library in Google Colab.
 
-After running the model, the following results were obtained:
+The following operations were performed:
 
-- **Accuracy:** 0.7479674796747967
-- **Precision:** 0.7368421052631579
-- **Recall:** 0.9882352941176471
-- **F1-Score:** 0.8442211055276382
-- **ROC-AUC:** 0.8417956656346749
+- Displayed the first five rows of the dataset.
+- Checked the number of rows and columns using `shape`.
+- Checked column names and data types using `info()`.
+- Checked missing values using `isnull().sum()`.
 
-The model's performance was also compared at different classification thresholds to understand how the threshold affects loan approval predictions.
+The dataset was inspected to understand its structure before applying the machine learning model.
+
+## 4. Data Preprocessing
+
+Data preprocessing was performed to prepare the dataset for Logistic Regression.
+
+The following steps were carried out:
+
+1. Checked and handled missing values.
+2. Removed the unnecessary `Loan_ID` column.
+3. Converted categorical values into numerical values using encoding.
+4. Separated the independent variables (X) and dependent variable (y).
+5. Divided the dataset into training and testing data using an 80:20 ratio.
+6. Applied feature scaling where required.
+
+The target variable `Loan_Status` was converted into numerical form:
+
+- N = 0
+- Y = 1
+
+## 5. Logistic Regression Model
+
+Logistic Regression is a supervised machine learning algorithm used for classification problems.
+
+It predicts the probability that an input belongs to a particular class.
+
+Unlike Linear Regression, which predicts continuous values, Logistic Regression predicts probabilities between 0 and 1.
+
+The Sigmoid function is used to convert the output into a probability.
+
+**Sigmoid Function:**
+
+```text
+σ(z) = 1 / (1 + e^(-z))
+```
+
+Where:
+
+- z = weighted sum of input features
+- e = mathematical constant
+- σ(z) = predicted probability
+
+If the predicted probability is greater than or equal to 0.5, the applicant is classified as approved. Otherwise, the applicant is classified as rejected.
+
+## 6. Model Training and Prediction
+
+The Logistic Regression model was created using the Scikit-learn library.
+
+The model was trained using the training dataset and tested using the testing dataset.
+
+After training, the model predicted the loan approval status for the test data.
+
+The model also generated probability values for loan approval.
+
+## 7. Model Evaluation
+
+The model was evaluated using different classification evaluation metrics.
+
+The following results were obtained:
+
+| Evaluation Metric | Result |
+|---|---:|
+| Accuracy | 74.80% |
+| Precision | 73.68% |
+| Recall | 98.82% |
+| F1-Score | 84.42% |
+| ROC-AUC Score | 84.18% |
+
+**Explanation of Evaluation Metrics:**
+
+1. **Accuracy:** Measures the overall percentage of correct predictions.
+2. **Precision:** Measures how many predicted positive cases were actually positive.
+3. **Recall:** Measures how many actual positive cases were correctly identified.
+4. **F1-Score:** Represents the balance between precision and recall.
+5. **ROC-AUC:** Measures how well the model distinguishes between the two classes.
+
+## 8. Confusion Matrix
+
+A confusion matrix is used to compare actual class labels with predicted class labels.
+
+It contains four values:
+
+- True Positive (TP): Correctly predicted approved applications.
+- True Negative (TN): Correctly predicted rejected applications.
+- False Positive (FP): Rejected applications incorrectly predicted as approved.
+- False Negative (FN): Approved applications incorrectly predicted as rejected.
+
+**Confusion Matrix Result:**
+
+<img width="662" height="567" alt="image" src="https://github.com/user-attachments/assets/e75dcfe6-d01d-4012-a6cc-af1f6f6db30c" />
 
 
-## 6. Conclusion
+**Specificity Formula:**
 
-In this activity, I implemented Logistic Regression for a binary classification problem using the Loan Prediction dataset.
+```text
+Specificity = TN / (TN + FP)
+```
 
-I learned how Logistic Regression predicts probabilities, converts them into class labels and evaluates classification performance using different metrics. I also understood how changing the classification threshold affects the predictions.
+**Specificity Result:**0.526316
 
-## Decision Log
+## 9. Threshold Comparison
 
-1. **Removing Loan_ID:** I removed the Loan_ID column because it is only an identifier and does not help predict loan approval.
-2. **Handling Missing Values:** I used median for numerical columns and mode for categorical columns to fill missing values.
-3. **Stratified Train-Test Split:** I used an 80:20 stratified split to maintain the class distribution in training and testing data.
-4. **Threshold Comparison:** I compared thresholds of 0.3, 0.5 and 0.7 to understand their effect on loan approval predictions.
+The classification threshold is used to convert predicted probabilities into class labels.
 
-## 7. Project Files
+Different thresholds such as 0.3, 0.5, and 0.7 were considered to understand how changing the threshold affects classification results.
 
-- `Loan_Approval_Logistic_Regression.ipynb` – Completed Python notebook.
+| Threshold | Accuracy | Precision | Recall | F1-Score |
+|---|---|---|---|---|
+| 0.3 | 0.7479674796747967 | 0.7368421052631579 | 0.9882352941176471 | 0.8442211055276382 |
+| 0.5 | 0.8455284552845529 | 0.8235294117647058 | 0.9882352941176471 | 0.8983957219251337 |
+| 0.7 | 0.8617886178861789 | 0.84 | 0.9882352941176471 | 0.9081081081081082 |
 
-## 8. Faculty GitHub ID
+The final threshold should be selected based on the actual comparison results and the purpose of the classification.
 
-Submission GitHub ID: [complexiota](https://github.com/complexiota)
+## 10. ROC Curve
 
-## 9. Student Repository
+The ROC curve is used to evaluate the performance of a binary classification model at different classification thresholds.
 
-This repository is created and maintained individually for the ML Activity 2 submission.
+It represents:
+
+- True Positive Rate (TPR) on the Y-axis.
+- False Positive Rate (FPR) on the X-axis.
+
+The ROC-AUC score obtained by the model was **0.8418**.
+
+This indicates that the model has a good ability to distinguish between approved and rejected loan applications.
+
+## 11. Conclusion
+
+In this activity, a Logistic Regression model was implemented to predict loan approval using the Loan Prediction dataset.
+
+The dataset was inspected and preprocessed before training the model. The model predicted whether a loan application would be approved or rejected.
+
+The performance was evaluated using accuracy, precision, recall, F1-score, confusion matrix, and ROC-AUC.
+
+The model achieved an accuracy of approximately 74.80% and an ROC-AUC score of 0.8418.
+
+Thus, this activity helped in understanding binary classification, Logistic Regression, probability prediction, classification thresholds, and model evaluation.
+
+## 12. Decision Log
+
+During the implementation of the Logistic Regression model, the following decisions were made:
+
+| Sr. No. | Decision Taken | Reason |
+|---|---|---|
+| 1 | Selected the Loan Prediction dataset. | It contains applicant details and loan approval status. |
+| 2 | Selected `Loan_Status` as the target variable. | It represents whether a loan is approved or rejected. |
+| 3 | Converted N and Y into 0 and 1. | Logistic Regression requires numerical target values. |
+| 4 | Removed unnecessary columns. | To avoid using irrelevant information during model training. |
+| 5 | Divided the dataset into training and testing sets in an 80:20 ratio. | To train the model and evaluate it on unseen data. |
+| 6 | Selected Logistic Regression. | It is suitable for binary classification problems. |
+| 7 | Used 0.5 as the initial classification threshold. | It provides a standard starting point for converting probabilities into class labels. |
+| 8 | Evaluated the model using accuracy, precision, recall, F1-score and ROC-AUC. | To understand the model's classification performance. |
+
+## 10. GitHub Submission Information
+**Submission GitHub ID:** [complexiota](https://github.com/complexiota)
+
+**Repository Name:** `Activity1_Multiple_Linear_Regression_[YourRollNumber]`
+
+**Repository Visibility:** Public
+
+**Student:** Purva Pangarkar  
+**Activity:** Logistic Regression
